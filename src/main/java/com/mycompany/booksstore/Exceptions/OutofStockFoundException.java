@@ -10,10 +10,10 @@
  */
     
 
-package com.mycompany.bookstore.Exceptions;
+package com.mycompany.booksstore.Exceptions;
 
-public class OutOfStockException extends RuntimeException {
-    public OutOfStockException(String message) {
+public class OutofStockFoundException extends RuntimeException {
+    public OutofStockFoundException(String message) {
         super(message);
     }
 }
