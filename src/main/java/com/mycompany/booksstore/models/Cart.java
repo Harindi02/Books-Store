@@ -4,10 +4,17 @@
  */
 package com.mycompany.booksstore.models;
 
-/**
- *
- * @author ASUS OLED
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cart {
-    
+    private int customerId;
+    private List<CartItem> items = new ArrayList<>();
+
+    public Cart(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getCustomerId() { return customerId; }
+    public List<CartItem> getItems() { return items; }
 }
