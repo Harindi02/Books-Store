@@ -8,6 +8,8 @@ package com.mycompany.booksstore.Exceptions;
  *
  * @author ASUS OLED
  */
-public class AuthorNotFoundexception {
-    
+public class AuthorNotFoundException extends RuntimeException {
+    public AuthorNotFoundException(String message) {
+        super(message);
+    }
 }

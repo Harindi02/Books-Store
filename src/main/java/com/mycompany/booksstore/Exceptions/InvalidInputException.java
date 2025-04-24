@@ -8,6 +8,10 @@ package com.mycompany.booksstore.Exceptions;
  *
  * @author ASUS OLED
  */
-public class InvalidInputException {
-    
+
+
+public class InvalidInputException extends RuntimeException {
+    public InvalidInputException(String message) {
+        super(message);
+    }
 }
