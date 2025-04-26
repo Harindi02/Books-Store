@@ -1,14 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ 
 package com.mycompany.booksstore.resources;
-
-/**
- *
- * @author ASUS OLED
- */
-
 
 import com.mycompany.booksstore.Service.AuthorService;
 import com.mycompany.booksstore.Service.BookService;
@@ -23,8 +14,8 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AuthorResource {
-    private AuthorService authorService = new AuthorService();
-    private BookService bookService = new BookService();
+    private final AuthorService authorService = new AuthorService();
+    private final BookService bookService = new BookService();
 
     @GET
     public List<Author> getAllAuthors() {
@@ -38,27 +29,27 @@ public class AuthorResource {
     }
 
     @GET
-    @Path("/{id}")
-    public Author getAuthor(@PathParam("id") int id) {
-        return authorService.getAuthor(id);
+    @Path("/{authorId}")
+    public Author getAuthor(@PathParam("authorId") int authorId) {
+        return authorService.getAuthor(authorId);
     }
 
     @PUT
-    @Path("/{id}")
-    public Author updateAuthor(@PathParam("id") int id, Author author) {
-        return authorService.updateAuthor(id, author);
+    @Path("/{authorId}")
+    public Author updateAuthor(@PathParam("authorId") int authorId, Author author) {
+        return authorService.updateAuthor(authorId, author);
     }
 
     @DELETE
-    @Path("/{id}")
-    public Response deleteAuthor(@PathParam("id") int id) {
-        authorService.deleteAuthor(id);
+    @Path("/{authorId}")
+    public Response deleteAuthor(@PathParam("authorId") int authorId) {
+        authorService.deleteAuthor(authorId);
         return Response.noContent().build();
     }
 
     @GET
-    @Path("/{id}/books")
-    public List<Book> getBooksByAuthor(@PathParam("id") int authorId) {
+    @Path("/{authorId}/books")
+    public List<Book> getBooksByAuthor(@PathParam("authorId") int authorId) {
         List<Book> allBooks = bookService.getAllBooks();
         allBooks.removeIf(book -> book.getAuthorID() != authorId);
         return allBooks;

@@ -1,35 +1,46 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.booksstore.models;
 
-/**
- *
- * @author ASUS OLED
- */
+import javax.json.bind.annotation.JsonbProperty;
+
 public class Author {
-    
-    private int id;
+    private int authorId;  // Field renamed to lowercase
     private String name;
     private String biography;
 
-    // Constructors, getters, setters
+    // Constructors
     public Author() {}
 
-    public Author(int id, String name, String biography) {
-        this.id = id;
+    public Author(int authorId, String name, String biography) {
+        this.authorId = authorId;
         this.name = name;
         this.biography = biography;
     }
 
-    // Getters and setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getBiography() { return biography; }
-    public void setBiography(String biography) { this.biography = biography; }
-}
-    
+    // Getters and Setters with JSON-B annotations
+    @JsonbProperty("authorId")
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    @JsonbProperty("authorId")
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+} 
 
