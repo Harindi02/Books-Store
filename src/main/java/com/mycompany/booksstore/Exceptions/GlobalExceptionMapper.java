@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.booksstore.Exceptions;
-
-/**
- *
- * @author ASUS OLED
- */
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -27,7 +18,8 @@ public class GlobalExceptionMapper implements ExceptionMapper<Exception> {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(new ErrorMessage(exception.getMessage()))
                     .build();
-        } else if (exception instanceof InvalidInputException) {
+        } else if (exception instanceof InvalidInputException || 
+                 exception instanceof IllegalArgumentException) {  // Added IllegalArgumentException here
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(new ErrorMessage(exception.getMessage()))
                     .build();
@@ -52,5 +44,10 @@ class ErrorMessage {
     
     public String getMessage() {
         return message;
+    }
+    
+    // Add setter if needed for JSON serialization
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
